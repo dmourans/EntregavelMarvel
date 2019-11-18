@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DesafioMarvel</string>
+    <string name="vai_pro_Site">Ir para Site</string>
+    <string name="pages">Pagina:</string>
+    <string name="price">Preço:</string>
+    <string name="published">Publicado:</string>
+</resources>
