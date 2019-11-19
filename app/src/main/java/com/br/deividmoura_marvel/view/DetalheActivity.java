@@ -27,18 +27,18 @@ import java.util.Locale;
 import static com.br.deividmoura_marvel.view.HomeActivity.RESULT_KEY;
 
 public class DetalheActivity extends AppCompatActivity {
-    private ImageView comicBackdrop;
-    private ImageView comicPoster;
-    private TextView comicTitle;
-    private TextView comicDate;
-    private TextView comicDescription;
-    private TextView comicPrice;
-    private TextView comicPages;
-    private Button comicWebsiteButton;
+    private ImageView livroBackDrop;
+    private ImageView livroPoster;
+    private TextView livroTitulo;
+    private TextView livroData;
+    private TextView livroDescricao;
+    private TextView livroPreco;
+    private TextView livroPaginas;
+    private Button livroSiteButton;
     private ProgressBar progressBar;
     private RelativeLayout contentContainer;
     private DetalheActivityViewModel viewModel;
-    private String comicUrl;
+    private String livroUrl;
     private String thumbUrl;
     private String thumbUrlLandscape;
 
@@ -62,16 +62,16 @@ public class DetalheActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        comicBackdrop = findViewById(R.id.comic_backdrop);
-        comicPoster = findViewById(R.id.comic_poster);
-        comicTitle = findViewById(R.id.comic_title);
-        comicDate = findViewById(R.id.comic_date);
-        comicDescription = findViewById(R.id.comic_description);
-        comicPrice = findViewById(R.id.comic_price);
-        comicPages = findViewById(R.id.comic_pages);
-        comicWebsiteButton = findViewById(R.id.comic_url_button);
-        progressBar = findViewById(R.id.progress_details);
-        contentContainer = findViewById(R.id.container_details);
+        livroBackDrop = findViewById(R.id.livro_backdrop);
+        livroPoster = findViewById(R.id.livro_poster);
+        livroTitulo = findViewById(R.id.livro_titulo);
+        livroData = findViewById(R.id.livro_data);
+        livroDescricao = findViewById(R.id.livro_descricao);
+        livroPreco = findViewById(R.id.livro_preco);
+        livroPaginas = findViewById(R.id.livro_paginas);
+        livroSiteButton = findViewById(R.id.livro_url_botao);
+        progressBar = findViewById(R.id.progress_detalhes);
+        contentContainer = findViewById(R.id.container_detalhes);
         viewModel = ViewModelProviders.of(this).get(DetalheActivityViewModel.class);
     }
 
@@ -87,54 +87,54 @@ public class DetalheActivity extends AppCompatActivity {
         viewModel.getComicById(id);
 
         viewModel.getComic().observe(this, result -> {
-            comicTitle.setText(result.getTitle());
+            livroTitulo.setText(result.getTitle());
 
             if (result.getDescription() != null) {
-                comicDescription.setText(result.getDescription().toString());
+                livroDescricao.setText(result.getDescription().toString());
             } else {
-                comicDescription.setVisibility(View.GONE);
+                livroDescricao.setVisibility(View.GONE);
             }
 
             for (Date date : result.getDates()) {
                 if (date.getType().equals("onsaleDate")) {
                     SimpleDateFormat output = new SimpleDateFormat("dd MMM yyyy", Locale.US);
-                    comicDate.setText(output.format(date.getDate()));
+                    livroData.setText(output.format(date.getDate()));
                 }
             }
 
             if (result.getPrices() != null) {
-                comicPrice.setText(String.format(Locale.US, "$ %.2f", result.getPrices().get(0).getPrice()));
+                livroPreco.setText(String.format(Locale.US, "$ %.2f", result.getPrices().get(0).getPrice()));
             }
 
-            comicPages.setText(String.format(Locale.US, "%d", result.getPageCount()));
+            livroPaginas.setText(String.format(Locale.US, "%d", result.getPageCount()));
             thumbUrl = result.getThumbnail().getPath() + "/detail." + result.getThumbnail().getExtension();
             thumbUrlLandscape = result.getThumbnail().getPath() + "/landscape_incredible." + result.getThumbnail().getExtension();
-            Picasso.get().load(thumbUrl).into(comicPoster);
+            Picasso.get().load(thumbUrl).into(livroPoster);
 
             for (Url url : result.getUrls()) {
                 if (url.getType().equals("detail")) {
-                    comicUrl = url.getUrl();
+                    livroUrl = url.getUrl();
                 }
             }
 
-            if (comicUrl != null && !comicUrl.isEmpty()) {
-                comicWebsiteButton.setVisibility(View.VISIBLE);
-                comicWebsiteButton.setOnClickListener(view -> {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(comicUrl));
+            if (livroUrl != null && !livroUrl.isEmpty()) {
+                livroSiteButton.setVisibility(View.VISIBLE);
+                livroSiteButton.setOnClickListener(view -> {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(livroUrl));
                     startActivity(intent);
                 });
             } else {
-                comicWebsiteButton.setVisibility(View.GONE);
+                livroSiteButton.setVisibility(View.GONE);
             }
 
-            comicPoster.setOnClickListener(view -> {
+            livroPoster.setOnClickListener(view -> {
                 FullImageDialog.showImage(this, thumbUrl);
             });
 
         });
 
         viewModel.getVariant().observe(this, result1 -> {
-            Picasso.get().load(result1.getThumbnail().getPath() + "/landscape_incredible." + result1.getThumbnail().getExtension()).into(comicBackdrop);
+            Picasso.get().load(result1.getThumbnail().getPath() + "/landscape_incredible." + result1.getThumbnail().getExtension()).into(livroBackDrop);
         });
 
         viewModel.getError().observe(this, s -> {

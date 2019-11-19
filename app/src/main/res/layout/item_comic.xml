@@ -13,7 +13,7 @@
         >
 
         <ImageView
-            android:id="@+id/image_item_cover"
+            android:id="@+id/imagem_item_cover"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_item_title"
+            android:id="@+id/texto_item_titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -34,7 +34,7 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_item_cover" />
+            app:layout_constraintTop_toBottomOf="@id/imagem_item_cover" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -65,8 +65,8 @@ public class HomeActivity extends AppCompatActivity implements LivroOnClick {
     }
 
     public void initViews() {
-        recyclerMonthComics = findViewById(R.id.recycler_home_comics);
-        progressMonthComics = findViewById(R.id.progress_home_comics);
+        recyclerMonthComics = findViewById(R.id.recycler_home_livros);
+        progressMonthComics = findViewById(R.id.progress_home_livros);
         viewModel = ViewModelProviders.of(this).get(HomeActivityViewModel.class);
         adapter = new RecyclerMesAdapter(monthComics, this);
         recyclerMonthComics.setLayoutManager(new GridLayoutManager(this, 3));
@@ -74,9 +74,9 @@ public class HomeActivity extends AppCompatActivity implements LivroOnClick {
     }
 
     @Override
-    public void onClick(Result result) {
+    public void onClick(Result resultado) {
         Intent intent = new Intent(HomeActivity.this, DetalheActivity.class);
-        intent.putExtra(RESULT_KEY, result.getId());
+        intent.putExtra(RESULT_KEY, resultado.getId());
         startActivity(intent);
     }
 

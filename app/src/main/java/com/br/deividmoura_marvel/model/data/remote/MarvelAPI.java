@@ -21,9 +21,9 @@ public interface MarvelAPI {
                                             @Query("offset") int offset);
 
     @GET("comics/{comicId}")
-    Observable<ComicsResponse> getSingleLivro(@Path("comicId") Long id,
-                                              @Query("ts") String timestamp,
-                                              @Query("hash") String hash,
-                                              @Query("apikey") String apiKey);
+    Observable<ComicsResponse> getUmLivro(@Path("comicId") Long id,
+                                          @Query("ts") String timestamp,
+                                          @Query("hash") String hash,
+                                          @Query("apikey") String apiKey);
 
 }

@@ -55,7 +55,7 @@ public class DetalheActivityViewModel extends AndroidViewModel {
 
     public void getComicById(Long comicId) {
         disposable.add(
-                repository.getSingle(comicId, timestamp, hash, PUBLIC_KEY)
+                repository.getUmLivro(comicId, timestamp, hash, PUBLIC_KEY)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe(disposable1 -> {
@@ -73,7 +73,7 @@ public class DetalheActivityViewModel extends AndroidViewModel {
                         .observeOn(Schedulers.newThread())
                         .flatMap(comicsResponse -> {
                                     if (!comicsResponse.getData().getResults().get(0).getVariants().isEmpty()) {
-                                        return repository.getSingle(getIdFromVariantUrl(comicsResponse.getData().getResults().get(0).getVariants().get(0).getResourceURI()), timestamp, hash, PUBLIC_KEY);
+                                        return repository.getUmLivro(getIdFromVariantUrl(comicsResponse.getData().getResults().get(0).getVariants().get(0).getResourceURI()), timestamp, hash, PUBLIC_KEY);
                                     } else {
                                         return Observable.just(comicsResponse);
                                     }

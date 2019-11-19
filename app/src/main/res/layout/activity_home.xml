@@ -7,7 +7,7 @@
     tools:context=".view.HomeActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_home_comics"
+        android:id="@+id/recycler_home_livros"
         android:background="@color/colorPrimaryDark"
         tools:listitem="@layout/item_comic"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -16,7 +16,7 @@
         android:layout_height="match_parent" />
 
     <ProgressBar
-        android:id="@+id/progress_home_comics"
+        android:id="@+id/progress_home_livros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -24,6 +24,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/recycler_home_comics" />
+        app:layout_constraintTop_toTopOf="@id/recycler_home_livros" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

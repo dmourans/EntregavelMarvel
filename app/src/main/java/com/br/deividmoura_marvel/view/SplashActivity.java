@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        splashImage = findViewById(R.id.splash_image);
+        splashImage = findViewById(R.id.splash_imagem);
 
         splashImage.setOnClickListener(view -> {
             jump();

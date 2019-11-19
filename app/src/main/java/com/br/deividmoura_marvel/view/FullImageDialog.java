@@ -16,7 +16,7 @@ public class FullImageDialog {
         AlertDialog.Builder imageDialog = new AlertDialog.Builder(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.full_image_dialog, null);
-        ImageView image = (ImageView) layout.findViewById(R.id.fullImage);
+        ImageView image = (ImageView) layout.findViewById(R.id.totalImagem);
 
         Picasso.get()
                 .load(strImagePath)

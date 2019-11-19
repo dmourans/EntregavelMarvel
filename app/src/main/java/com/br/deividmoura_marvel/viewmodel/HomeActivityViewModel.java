@@ -52,7 +52,7 @@ public class HomeActivityViewModel extends AndroidViewModel {
 
     public void getThisMonthComics(int offset) {
         disposable.add(
-                repository.getComics(date, format, formatType, order, timestamp, hash, PUBLIC_KEY, true, offset)
+                repository.getLivros(date, format, formatType, order, timestamp, hash, PUBLIC_KEY, true, offset)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe(disposable1 -> {

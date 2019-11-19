@@ -17,11 +17,11 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class RecyclerMesAdapter extends RecyclerView.Adapter<RecyclerMesAdapter.ViewHolder> {
-    private List<Result> resultList;
+    private List<Result> listaResultado;
     private LivroOnClick listener;
 
-    public RecyclerMesAdapter(List<Result> resultList, LivroOnClick listener) {
-        this.resultList = resultList;
+    public RecyclerMesAdapter(List<Result> listaResultado, LivroOnClick listener) {
+        this.listaResultado = listaResultado;
         this.listener = listener;
     }
 
@@ -34,7 +34,7 @@ public class RecyclerMesAdapter extends RecyclerView.Adapter<RecyclerMesAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Result result = resultList.get(position);
+        Result result = listaResultado.get(position);
         holder.onBind(result);
 
         holder.itemView.setOnClickListener(view -> {
@@ -44,33 +44,33 @@ public class RecyclerMesAdapter extends RecyclerView.Adapter<RecyclerMesAdapter.
 
     @Override
     public int getItemCount() {
-        return resultList == null ? 0 : resultList.size();
+        return listaResultado == null ? 0 : listaResultado.size();
     }
 
     public void updateList(List<Result> newList) {
-        if (this.resultList.isEmpty()) {
-            this.resultList = newList;
+        if (this.listaResultado.isEmpty()) {
+            this.listaResultado = newList;
         } else {
-            this.resultList.addAll(newList);
+            this.listaResultado.addAll(newList);
         }
         notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView comicCover;
-        private TextView comicTitle;
+        private ImageView livroCover;
+        private TextView livroTitulo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            comicCover = itemView.findViewById(R.id.image_item_cover);
-            comicTitle = itemView.findViewById(R.id.text_item_title);
+            livroCover = itemView.findViewById(R.id.imagem_item_cover);
+            livroTitulo = itemView.findViewById(R.id.texto_item_titulo);
         }
 
         public void onBind(Result result) {
-            comicTitle.setText(result.getTitle());
+            livroTitulo.setText(result.getTitle());
             Picasso picasso = Picasso.get();
-            picasso.load(result.getThumbnail().getPath() + "/detail." + result.getThumbnail().getExtension()).into(comicCover);
+            picasso.load(result.getThumbnail().getPath() + "/detail." + result.getThumbnail().getExtension()).into(livroCover);
         }
     }
 }
