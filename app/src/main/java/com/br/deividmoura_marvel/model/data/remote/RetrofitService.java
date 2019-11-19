@@ -1,4 +1,4 @@
-package com.br.deividmoura_marvel.data.remote;
+package com.br.deividmoura_marvel.model.data.remote;
 
 import com.facebook.stetho.BuildConfig;
 import com.facebook.stetho.okhttp3.StethoInterceptor;

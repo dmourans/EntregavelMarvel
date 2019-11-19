@@ -1,4 +1,4 @@
-package com.br.deividmoura_marvel.data.remote;
+package com.br.deividmoura_marvel.model.data.remote;
 
 import com.br.deividmoura_marvel.model.ComicsResponse;
 
@@ -10,7 +10,7 @@ import retrofit2.http.Query;
 public interface MarvelAPI {
 
     @GET("comics")
-    Observable<ComicsResponse> getAllComics(@Query("dateDescriptor") String data,
+    Observable<ComicsResponse> getAllLivros(@Query("dateDescriptor") String data,
                                             @Query("format") String format,
                                             @Query("formatType") String formatType,
                                             @Query("orderBy") String order,
@@ -21,7 +21,7 @@ public interface MarvelAPI {
                                             @Query("offset") int offset);
 
     @GET("comics/{comicId}")
-    Observable<ComicsResponse> getSingleComic(@Path("comicId") Long id,
+    Observable<ComicsResponse> getSingleLivro(@Path("comicId") Long id,
                                               @Query("ts") String timestamp,
                                               @Query("hash") String hash,
                                               @Query("apikey") String apiKey);

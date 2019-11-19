@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.br.deividmoura_marvel.model.Result;
-import com.br.deividmoura_marvel.repository.LivrosRepository;
+import com.br.deividmoura_marvel.model.repository.LivrosRepository;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
